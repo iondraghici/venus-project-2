@@ -681,5 +681,45 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
     </script>
+    /* LANGUAGE SWITCH - MOBILE FIX */
+.language-switch,
+.lang-switch,
+[lang-switch], /* adaptează după clasa ta reală */
+.nav-language,
+header .language {
+  display: flex !important;
+  position: fixed !important;
+  top: 10px !important;
+  right: 10px !important;
+  z-index: 9999 !important;
+  background: rgba(0, 0, 0, 0.8) !important;
+  backdrop-filter: blur(10px) !important;
+  padding: 8px 12px !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #fff !important;
+  text-decoration: none !important;
+  min-height: 44px !important;
+  min-width: 44px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  touch-action: manipulation !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+/* Dacă e buton cu două limbi */
+.language-switch a,
+.language-switch button {
+  color: #00d4ff !important;
+  text-decoration: none !important;
+  padding: 0 5px !important;
+}
+
+.language-switch .active {
+  color: #fff !important;
+  font-weight: 700 !important;
+}
 </body>
 </html>
