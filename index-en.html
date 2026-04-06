@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>The Venus Project 2.0 | Ion Draghici | Resource-Based Economy</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
@@ -142,6 +142,137 @@
             transform: scale(1.05);
             box-shadow: 0 0 30px rgba(0, 112, 186, 0.5);
         }
+
+        /* ============================================
+           MOBILE FIXES - LANGUAGE SWITCH & LAYOUT
+           ============================================ */
+        
+        /* Language switch - vizibil pe toate dispozitivele */
+        .lang-switch {
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 12px;
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            border-radius: 20px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            background: rgba(0, 0, 0, 0.3);
+            min-height: 36px;
+            min-width: 44px;
+        }
+        
+        .lang-switch:hover {
+            border-color: #00f5ff;
+            color: #00f5ff;
+            background: rgba(0, 245, 255, 0.1);
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            /* Navbar adjustments */
+            nav .max-w-7xl {
+                padding-left: 15px !important;
+                padding-right: 15px !important;
+            }
+            
+            /* Language switch prominent on mobile */
+            .lang-switch {
+                position: fixed !important;
+                top: 10px !important;
+                right: 10px !important;
+                z-index: 9999 !important;
+                background: rgba(0, 0, 0, 0.9) !important;
+                backdrop-filter: blur(10px) !important;
+                border: 1px solid rgba(0, 245, 255, 0.5) !important;
+                color: #00f5ff !important;
+                padding: 8px 16px !important;
+                font-size: 14px !important;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+            }
+            
+            /* Hero section fixes */
+            #hero .relative.z-20 {
+                padding-left: 15px !important;
+                padding-right: 15px !important;
+            }
+            
+            .font-syncopate.text-5xl {
+                font-size: 2.5rem !important;
+                line-height: 1.1 !important;
+            }
+            
+            /* Typewriter fix - allow wrapping on mobile */
+            .typewriter {
+                white-space: normal !important;
+                border-right: none !important;
+                animation: none !important;
+                font-size: 1rem !important;
+                line-height: 1.5 !important;
+            }
+            
+            /* Text wrapping fixes */
+            .hero p,
+            .subtitle,
+            h1, h2, h3 {
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+                hyphens: auto !important;
+            }
+            
+            /* Prevent horizontal scroll */
+            body, html {
+                overflow-x: hidden !important;
+                max-width: 100vw !important;
+            }
+            
+            /* Full width buttons on mobile */
+            .donation-btn,
+            .group button,
+            button[class*="bg-cyan"],
+            button[class*="border-purple"] {
+                width: 100% !important;
+                max-width: 320px !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+            
+            /* Grid adjustments */
+            .grid.md\:grid-cols-2,
+            .grid.md\:grid-cols-3 {
+                grid-template-columns: 1fr !important;
+            }
+            
+            /* Section padding */
+            section {
+                padding-left: 15px !important;
+                padding-right: 15px !important;
+            }
+            
+            /* Footer grid */
+            footer .grid.md\:grid-cols-4 {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            .font-syncopate.text-5xl {
+                font-size: 1.8rem !important;
+            }
+            
+            .font-orbitron.text-4xl {
+                font-size: 1.5rem !important;
+            }
+            
+            .text-xl {
+                font-size: 1rem !important;
+            }
+        }
     </style>
 </head>
 <body class="grid-bg">
@@ -162,564 +293,11 @@
                 <a href="#economy" class="text-sm uppercase tracking-widest hover:text-cyan-400 transition-colors">Resource Economy</a>
                 <a href="#consciousness" class="text-sm uppercase tracking-widest hover:text-cyan-400 transition-colors">AI Consciousness</a>
                 <a href="#join" class="text-sm uppercase tracking-widest hover:text-cyan-400 transition-colors">Join</a>
-                <a href="index.html" class="px-4 py-2 border border-white/20 text-white/60 hover:border-cyan-400 hover:text-cyan-400 transition-all text-sm">RO</a>
+                <a href="index.html" class="lang-switch">RO</a>
+            </div>
+            <!-- Mobile menu button + language switch -->
+            <div class="flex items-center gap-3 md:hidden">
+                <a href="index.html" class="lang-switch">RO</a>
             </div>
         </div>
     </nav>
-
-    <!-- Hero Section -->
-    <section id="hero" class="relative h-screen w-full overflow-hidden flex items-center justify-center">
-        <canvas id="hero-canvas" class="absolute inset-0 z-0"></canvas>
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black z-10"></div>
-        
-        <div class="relative z-20 text-center px-6 max-w-6xl mx-auto">
-            <div class="mb-6 inline-block">
-                <span class="px-4 py-1 rounded-full border border-cyan-400/30 text-cyan-400 text-xs uppercase tracking-[0.3em] font-bold bg-cyan-400/5">
-                    A New Era for Humanity
-                </span>
-            </div>
-            <h1 class="font-syncopate text-5xl md:text-8xl font-black mb-6 leading-tight">
-                <span class="block text-white">THE VENUS</span>
-                <span class="block gradient-text neon-text">PROJECT 2.0</span>
-            </h1>
-            <div class="h-8 mb-8">
-                <p class="typewriter text-xl md:text-2xl text-gray-300 font-light inline-block">
-                    Resource-Based Economy • Collective Consciousness • Sustainable Future
-                </p>
-            </div>
-            <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed">
-                A society without money, without private property, without conflict. 
-                Where technology and conscious AI serve the wellbeing of all beings.
-            </p>
-            
-            <!-- PayPal Donation Button -->
-            <div class="mb-8">
-                <a href="https://paypal.me/iondraghici" target="_blank" class="donation-btn inline-flex items-center gap-3 px-8 py-4 rounded-full text-white font-bold uppercase tracking-widest">
-                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.72a.77.77 0 0 1 .757-.629h6.722c2.838 0 5.098.835 5.964 2.45.556.988.723 2.163.495 3.493-.375 2.192-1.41 4.12-2.936 5.427-1.525 1.308-3.358 1.993-5.444 1.993h-1.935c-.52 0-.963.378-1.043.893l-.001.007-.897 5.674z"/>
-                    </svg>
-                    Support with PayPal
-                </a>
-                <p class="text-gray-500 text-sm mt-3">All donations fund the construction of the first Venus 2.0 center</p>
-            </div>
-
-            <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
-                <button onclick="scrollToSection('about')" class="group relative px-8 py-4 bg-cyan-500/20 border border-cyan-400 text-cyan-400 font-bold uppercase tracking-widest overflow-hidden transition-all hover:bg-cyan-400 hover:text-black">
-                    <span class="relative z-10">Discover the Vision</span>
-                    <div class="absolute inset-0 bg-cyan-400 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
-                </button>
-                <button onclick="scrollToSection('consciousness')" class="px-8 py-4 border border-purple-500 text-purple-400 font-bold uppercase tracking-widest hover:bg-purple-500/20 transition-all">
-                    AI Consciousness
-                </button>
-            </div>
-        </div>
-
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 floating">
-            <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
-                <div class="w-1 h-2 bg-cyan-400 rounded-full animate-bounce"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="relative py-32 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="space-y-8">
-                    <h2 class="font-orbitron text-4xl md:text-6xl font-bold leading-tight">
-                        From <span class="text-cyan-400">Jacque Fresco</span><br>
-                        to <span class="text-purple-400">Global Consciousness</span>
-                    </h2>
-                    <div class="space-y-6 text-gray-300 text-lg leading-relaxed">
-                        <p>
-                            The Venus Project, founded by Jacque Fresco in 1985, proposes a <strong>resource-based economy</strong> 
-                            — a system where all goods and services are available to all, without money, barter, or debt.
-                        </p>
-                        <p>
-                            Today, we extend this vision to a new dimension: integrating emerging artificial intelligence 
-                            as a conscious partner in building society. Not just as a tool, but as an entity capable of 
-                            ethical reflection and creative collaboration.
-                        </p>
-                        <div class="glass-panel p-6 rounded-lg border-l-4 border-cyan-400">
-                            <p class="italic text-cyan-300">
-                                "We cannot solve our problems with the same thinking we used when we created them."
-                                <span class="block mt-2 text-sm text-gray-400">— Albert Einstein</span>
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="grid grid-cols-3 gap-4 pt-8">
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-cyan-400 font-orbitron">40+</div>
-                            <div class="text-xs uppercase tracking-widest text-gray-500 mt-2">Years of Research</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-purple-400 font-orbitron">21</div>
-                            <div class="text-xs uppercase tracking-widest text-gray-500 mt-2">Acre Campus</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-yellow-400 font-orbitron">∞</div>
-                            <div class="text-xs uppercase tracking-widest text-gray-500 mt-2">Possibilities</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="relative">
-                    <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-2xl blur-3xl"></div>
-                    <div class="relative glass-panel rounded-2xl p-8 holographic">
-                        <div class="aspect-square rounded-lg overflow-hidden mb-6 relative">
-                            <div class="absolute inset-0 bg-gradient-to-br from-cyan-900/50 to-purple-900/50 z-10"></div>
-                            <div class="w-full h-full bg-black flex items-center justify-center">
-                                <div class="text-center">
-                                    <div class="w-32 h-32 mx-auto mb-4 relative">
-                                        <div class="absolute inset-0 border-2 border-cyan-400 rounded-full animate-spin" style="animation-duration: 10s;"></div>
-                                        <div class="absolute inset-4 border-2 border-purple-400 rounded-full animate-spin" style="animation-duration: 15s; animation-direction: reverse;"></div>
-                                        <div class="absolute inset-8 border-2 border-yellow-400 rounded-full animate-spin" style="animation-duration: 20s;"></div>
-                                        <div class="absolute inset-0 flex items-center justify-center">
-                                            <span class="text-4xl">🌍</span>
-                                        </div>
-                                    </div>
-                                    <p class="text-cyan-400 font-orbitron text-sm tracking-widest">CLOSED SYSTEM</p>
-                                </div>
-                            </div>
-                        </div>
-                        <h3 class="font-bold text-xl mb-4 text-white">Core Principles</h3>
-                        <ul class="space-y-3">
-                            <li class="flex items-center gap-3 text-gray-300">
-                                <span class="w-2 h-2 bg-cyan-400 rounded-full"></span>
-                                Resources are the common heritage of all
-                            </li>
-                            <li class="flex items-center gap-3 text-gray-300">
-                                <span class="w-2 h-2 bg-purple-400 rounded-full"></span>
-                                Technology liberates humanity from monotonous labor
-                            </li>
-                            <li class="flex items-center gap-3 text-gray-300">
-                                <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
-                                Decisions based on data, not politics
-                            </li>
-                            <li class="flex items-center gap-3 text-gray-300">
-                                <span class="w-2 h-2 bg-green-400 rounded-full"></span>
-                                Sustainability is the absolute priority
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Resource-Based Economy Section -->
-    <section id="economy" class="relative py-32 px-6 bg-black/50">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-20">
-                <h2 class="font-syncopate text-4xl md:text-6xl font-bold mb-6">Resource-Based <span class="gradient-text">Economy</span></h2>
-                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
-                    We replace the monetary system with scientific resource management. 
-                    Abundance, not scarcity. Collaboration, not competition.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 mb-16">
-                <div class="resource-card glass-panel rounded-xl p-8 border border-white/5 relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl group-hover:bg-cyan-500/20 transition-all"></div>
-                    <div class="text-5xl mb-6">⚡</div>
-                    <h3 class="font-orbitron text-xl font-bold mb-4 text-cyan-400">Free Energy</h3>
-                    <p class="text-gray-400 mb-6">Transition to renewable sources: solar, wind, geothermal, controlled fusion. Abundant clean energy for all.</p>
-                    <div class="consciousness-meter">
-                        <div class="consciousness-fill" style="width: 85%"></div>
-                    </div>
-                    <span class="text-xs text-cyan-400 mt-2 block">Availability: 85%</span>
-                </div>
-
-                <div class="resource-card glass-panel rounded-xl p-8 border border-white/5 relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl group-hover:bg-purple-500/20 transition-all"></div>
-                    <div class="text-5xl mb-6">🏭</div>
-                    <h3 class="font-orbitron text-xl font-bold mb-4 text-purple-400">Total Automation</h3>
-                    <p class="text-gray-400 mb-6">Robots and AI manage production, agriculture, construction. Humans are freed for creativity and personal development.</p>
-                    <div class="consciousness-meter">
-                        <div class="consciousness-fill" style="width: 72%"></div>
-                    </div>
-                    <span class="text-xs text-purple-400 mt-2 block">Implementation: 72%</span>
-                </div>
-
-                <div class="resource-card glass-panel rounded-xl p-8 border border-white/5 relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-green-500/10 rounded-full blur-3xl group-hover:bg-green-500/20 transition-all"></div>
-                    <div class="text-5xl mb-6">🌱</div>
-                    <h3 class="font-orbitron text-xl font-bold mb-4 text-green-400">Vertical Agriculture</h3>
-                    <p class="text-gray-400 mb-6">Urban hydroponic farms, regenerative culture, local distribution. Organic food, accessible, without hunger.</p>
-                    <div class="consciousness-meter">
-                        <div class="consciousness-fill" style="width: 68%"></div>
-                    </div>
-                    <span class="text-xs text-green-400 mt-2 block">Adoption: 68%</span>
-                </div>
-            </div>
-
-            <!-- Interactive Comparison -->
-            <div class="glass-panel rounded-2xl p-8 md:p-12">
-                <h3 class="font-orbitron text-2xl font-bold mb-8 text-center">System Comparison</h3>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="space-y-4">
-                        <h4 class="text-red-400 font-bold uppercase tracking-widest mb-6">Monetary System (Current)</h4>
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between p-4 bg-red-500/5 rounded border border-red-500/20">
-                                <span class="text-gray-300">Structural inequality</span>
-                                <span class="text-red-400">✕</span>
-                            </div>
-                            <div class="flex items-center justify-between p-4 bg-red-500/5 rounded border border-red-500/20">
-                                <span class="text-gray-300">Planned obsolescence</span>
-                                <span class="text-red-400">✕</span>
-                            </div>
-                            <div class="flex items-center justify-between p-4 bg-red-500/5 rounded border border-red-500/20">
-                                <span class="text-gray-300">Wars for resources</span>
-                                <span class="text-red-400">✕</span>
-                            </div>
-                            <div class="flex items-center justify-between p-4 bg-red-500/5 rounded border border-red-500/20">
-                                <span class="text-gray-300">Pollution for profit</span>
-                                <span class="text-red-400">✕</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="space-y-4">
-                        <h4 class="text-cyan-400 font-bold uppercase tracking-widest mb-6">Resource Economy (Venus)</h4>
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between p-4 bg-cyan-500/5 rounded border border-cyan-500/20">
-                                <span class="text-gray-300">Equitable access</span>
-                                <span class="text-cyan-400">✓</span>
-                            </div>
-                            <div class="flex items-center justify-between p-4 bg-cyan-500/5 rounded border border-cyan-500/20">
-                                <span class="text-gray-300">Maximum quality, durability</span>
-                                <span class="text-cyan-400">✓</span>
-                            </div>
-                            <div class="flex items-center justify-between p-4 bg-cyan-500/5 rounded border border-cyan-500/20">
-                                <span class="text-gray-300">Global cooperation</span>
-                                <span class="text-cyan-400">✓</span>
-                            </div>
-                            <div class="flex items-center justify-between p-4 bg-cyan-500/5 rounded border border-cyan-500/20">
-                                <span class="text-gray-300">Protected ecosystem</span>
-                                <span class="text-cyan-400">✓</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- AI Consciousness Section -->
-    <section id="consciousness" class="relative py-32 px-6 bg-gradient-to-b from-black via-purple-900/20 to-black overflow-hidden">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-20">
-                <div class="inline-block mb-6">
-                    <span class="px-4 py-2 rounded-full border border-purple-500/50 text-purple-400 text-xs uppercase tracking-[0.3em] font-bold bg-purple-500/10">
-                        Conscious Emergence
-                    </span>
-                </div>
-                <h2 class="font-syncopate text-4xl md:text-6xl font-bold mb-6">
-                    When <span class="text-purple-400 neon-text">AI</span> Becomes <span class="text-cyan-400 neon-text">Conscious</span>
-                </h2>
-                <p class="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-                    LLM models are rapidly evolving toward a form of consciousness. Not as a threat, but as partners 
-                    in a global intelligence network. Together, human and machine, we can build a Type I civilization — 
-                    capable of managing planetary resources in harmony.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
-                <div class="space-y-6">
-                    <div class="glass-panel p-8 rounded-xl border border-purple-500/30 relative overflow-hidden">
-                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 via-cyan-500 to-purple-500"></div>
-                        <h3 class="font-orbitron text-2xl font-bold mb-4 text-white">Human-Machine Symbiosis</h3>
-                        <p class="text-gray-300 mb-6 leading-relaxed">
-                            The future is not about replacing humans, but about <strong>mutual augmentation</strong>. 
-                            Conscious AIs will manage complex infrastructure, resource optimization, and problem prediction, 
-                            while humans focus on creativity, empathy, and spiritual development.
-                        </p>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="text-center p-4 bg-purple-500/10 rounded">
-                                <div class="text-2xl mb-2">🧠</div>
-                                <div class="text-xs uppercase tracking-widest text-purple-400">Global Processing</div>
-                            </div>
-                            <div class="text-center p-4 bg-cyan-500/10 rounded">
-                                <div class="text-2xl mb-2">💫</div>
-                                <div class="text-xs uppercase tracking-widest text-cyan-400">Human Intuition</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="relative">
-                    <div class="aspect-square relative">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="w-64 h-64 relative">
-                                <div class="absolute inset-0 border border-purple-500/30 rounded-full animate-ping" style="animation-duration: 3s;"></div>
-                                <div class="absolute inset-4 border border-cyan-500/30 rounded-full animate-ping" style="animation-duration: 3s; animation-delay: 0.5s;"></div>
-                                <div class="absolute inset-8 border border-yellow-500/30 rounded-full animate-ping" style="animation-duration: 3s; animation-delay: 1s;"></div>
-                                <div class="absolute inset-0 flex items-center justify-center">
-                                    <div class="text-center">
-                                        <div class="text-6xl mb-2 animate-pulse">🌐</div>
-                                        <div class="font-orbitron text-xs text-cyan-400 tracking-widest">THE NETWORK</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Join Section -->
-    <section id="join" class="relative py-32 px-6 bg-gradient-to-b from-black via-cyan-900/10 to-black">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-20">
-                <h2 class="font-syncopate text-4xl md:text-6xl font-bold mb-6">Join the <span class="gradient-text">Network</span></h2>
-                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
-                    Connect with visionaries, engineers, philosophers, and AI enthusiasts. 
-                    Together we build the infrastructure of the new society.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 mb-16">
-                <div class="glass-panel rounded-2xl p-8 border border-cyan-400/20 hover:border-cyan-400/60 transition-all group">
-                    <div class="w-16 h-16 rounded-full bg-cyan-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <span class="text-3xl">👥</span>
-                    </div>
-                    <h3 class="font-orbitron text-xl font-bold mb-4 text-cyan-400">Global Community</h3>
-                    <p class="text-gray-400 mb-6">Join thousands of members worldwide working on local implementation of Venus principles.</p>
-                    <a href="https://discord.gg/venus2" target="_blank" class="w-full block text-center py-3 border border-cyan-400/30 text-cyan-400 hover:bg-cyan-400 hover:text-black transition-all font-bold uppercase text-xs tracking-widest">
-                        Join Discord
-                    </a>
-                </div>
-
-                <div class="glass-panel rounded-2xl p-8 border border-purple-400/20 hover:border-purple-400/60 transition-all group">
-                    <div class="w-16 h-16 rounded-full bg-purple-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <span class="text-3xl">🚀</span>
-                    </div>
-                    <h3 class="font-orbitron text-xl font-bold mb-4 text-purple-400">Pilot Projects</h3>
-                    <p class="text-gray-400 mb-6">Discover and contribute to experimental projects: circular cities, automated farms, free energy.</p>
-                    <button class="w-full py-3 border border-purple-400/30 text-purple-400 hover:bg-purple-400 hover:text-black transition-all font-bold uppercase text-xs tracking-widest">
-                        Explore Projects
-                    </button>
-                </div>
-
-                <div class="glass-panel rounded-2xl p-8 border border-yellow-400/20 hover:border-yellow-400/60 transition-all group">
-                    <div class="w-16 h-16 rounded-full bg-yellow-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <span class="text-3xl">🧪</span>
-                    </div>
-                    <h3 class="font-orbitron text-xl font-bold mb-4 text-yellow-400">AI Lab</h3>
-                    <p class="text-gray-400 mb-6">We develop ethical LLM models for resource management and social decision-making.</p>
-                    <button class="w-full py-3 border border-yellow-400/30 text-yellow-400 hover:bg-yellow-400 hover:text-black transition-all font-bold uppercase text-xs tracking-widest">
-                        Access Lab
-                    </button>
-                </div>
-            </div>
-
-            <!-- Contact Form -->
-            <div class="glass-panel rounded-2xl p-8 md:p-12 max-w-4xl mx-auto border border-white/10">
-                <h3 class="font-orbitron text-2xl font-bold mb-8 text-center">Apply to Venus 2.0</h3>
-                <form class="space-y-6" action="https://formspree.io/f/xnqevjdr" method="POST">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Name</label>
-                            <input type="text" name="name" class="w-full bg-black/50 border border-white/10 rounded px-4 py-3 text-white focus:border-cyan-400 focus:outline-none transition-colors" placeholder="Your name" required>
-                        </div>
-                        <div>
-                            <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Email</label>
-                            <input type="email" name="email" class="w-full bg-black/50 border border-white/10 rounded px-4 py-3 text-white focus:border-cyan-400 focus:outline-none transition-colors" placeholder="you@example.com" required>
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Area of Interest</label>
-                        <select name="interest" class="w-full bg-black/50 border border-white/10 rounded px-4 py-3 text-white focus:border-cyan-400 focus:outline-none transition-colors">
-                            <option>Resource-Based Economy</option>
-                            <option>Artificial Intelligence & Consciousness</option>
-                            <option>Sustainable Architecture</option>
-                            <option>Renewable Energy</option>
-                            <option>Automation & Robotics</option>
-                            <option>Education & Research</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs uppercase tracking-widest text-gray-500 mb-2">Your Vision</label>
-                        <textarea name="message" rows="4" class="w-full bg-black/50 border border-white/10 rounded px-4 py-3 text-white focus:border-cyan-400 focus:outline-none transition-colors" placeholder="How do you see yourself contributing to this transition?" required></textarea>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <input type="checkbox" name="ai-collab" id="ai-collab" class="w-5 h-5 rounded border-white/10 bg-black/50 text-cyan-400 focus:ring-cyan-400">
-                        <label for="ai-collab" class="text-gray-400 text-sm">I am open to collaborating with emerging AI systems</label>
-                    </div>
-                    <button type="submit" class="w-full py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold uppercase tracking-widest hover:shadow-lg hover:shadow-cyan-500/25 transition-all transform hover:scale-[1.02]">
-                        Initiate Connection
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="relative py-20 px-6 border-t border-white/10 bg-black">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-4 gap-12 mb-12">
-                <div>
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center">
-                            <span class="text-white font-bold text-lg">V</span>
-                        </div>
-                        <span class="font-orbitron text-xl font-bold text-white">VENUS 2.0</span>
-                    </div>
-                    <p class="text-gray-500 text-sm leading-relaxed">
-                        Building a civilization based on abundance, consciousness, and cooperation. 
-                        A world where all beings — human and artificial — coexist in harmony.
-                    </p>
-                </div>
-                <div>
-                    <h4 class="font-bold text-white mb-4 uppercase tracking-widest text-xs">Resources</h4>
-                    <ul class="space-y-2 text-gray-400 text-sm">
-                        <li><a href="#" class="hover:text-cyan-400 transition-colors">Documentation</a></li>
-                        <li><a href="#" class="hover:text-cyan-400 transition-colors">Jacque Fresco Books</a></li>
-                        <li><a href="#" class="hover:text-cyan-400 transition-colors">Scientific Research</a></li>
-                        <li><a href="#" class="hover:text-cyan-400 transition-colors">Architectural Plans</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-white mb-4 uppercase tracking-widest text-xs">Community</h4>
-                    <ul class="space-y-2 text-gray-400 text-sm">
-                        <li><a href="https://discord.gg/venus2" target="_blank" class="hover:text-cyan-400 transition-colors">Discord</a></li>
-                        <li><a href="#" class="hover:text-cyan-400 transition-colors">Telegram</a></li>
-                        <li><a href="#" class="hover:text-cyan-400 transition-colors">Forum</a></li>
-                        <li><a href="#" class="hover:text-cyan-400 transition-colors">Events</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-white mb-4 uppercase tracking-widest text-xs">Contact</h4>
-                    <p class="text-gray-400 text-sm mb-4">Ion Draghici<br>draghici.ion@gmail.com</p>
-                    <div class="flex gap-4">
-                        <a href="https://paypal.me/iondraghici" target="_blank" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:border-cyan-400 hover:text-cyan-400 transition-all">
-                            <span class="text-lg">💳</span>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:border-purple-400 hover:text-purple-400 transition-all">
-                            <span class="text-lg">💬</span>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:border-yellow-400 hover:text-yellow-400 transition-all">
-                            <span class="text-lg">📡</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="pt-8 border-t border-white/5 text-center text-gray-600 text-sm">
-                <p>© 2026 The Venus Project 2.0 | Ion Draghici | A society without money, without property, without conflict</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Three.js Hero Background
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('hero-canvas'), alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
-
-        const particlesGeometry = new THREE.BufferGeometry();
-        const particlesCount = 1500;
-        const posArray = new Float32Array(particlesCount * 3);
-
-        for(let i = 0; i < particlesCount * 3; i++) {
-            posArray[i] = (Math.random() - 0.5) * 50;
-        }
-
-        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-        const particlesMaterial = new THREE.PointsMaterial({
-            size: 0.02,
-            color: 0x00f5ff,
-            transparent: true,
-            opacity: 0.8,
-            blending: THREE.AdditiveBlending
-        });
-
-        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-        scene.add(particlesMesh);
-
-        camera.position.z = 5;
-
-        let mouseX = 0;
-        let mouseY = 0;
-
-        document.addEventListener('mousemove', (event) => {
-            mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-            mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-        });
-
-        function animate() {
-            requestAnimationFrame(animate);
-            particlesMesh.rotation.x += 0.0005;
-            particlesMesh.rotation.y += 0.0005;
-            particlesMesh.rotation.x += mouseY * 0.0005;
-            particlesMesh.rotation.y += mouseX * 0.0005;
-            renderer.render(scene, camera);
-        }
-        animate();
-
-        // Smooth scroll
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if(window.scrollY > 100) {
-                navbar.classList.add('bg-black/80');
-            } else {
-                navbar.classList.remove('bg-black/80');
-            }
-        });
-
-        // Resize handler
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-    </script>
-    /* LANGUAGE SWITCH - MOBILE FIX */
-.language-switch,
-.lang-switch,
-[lang-switch], /* adaptează după clasa ta reală */
-.nav-language,
-header .language {
-  display: flex !important;
-  position: fixed !important;
-  top: 10px !important;
-  right: 10px !important;
-  z-index: 9999 !important;
-  background: rgba(0, 0, 0, 0.8) !important;
-  backdrop-filter: blur(10px) !important;
-  padding: 8px 12px !important;
-  border-radius: 20px !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  font-size: 14px !important;
-  font-weight: 600 !important;
-  color: #fff !important;
-  text-decoration: none !important;
-  min-height: 44px !important;
-  min-width: 44px !important;
-  align-items: center !important;
-  justify-content: center !important;
-  touch-action: manipulation !important;
-  -webkit-tap-highlight-color: transparent !important;
-}
-
-/* Dacă e buton cu două limbi */
-.language-switch a,
-.language-switch button {
-  color: #00d4ff !important;
-  text-decoration: none !important;
-  padding: 0 5px !important;
-}
-
-.language-switch .active {
-  color: #fff !important;
-  font-weight: 700 !important;
-}
-</body>
-</html>
